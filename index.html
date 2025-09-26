@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Recipe Book</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <div class="logo">RB</div>
+        <div>
+          <h1>📖 My Recipe Book</h1>
+          <p class="lead">Save and view your favorite recipes</p>
+        </div>
+      </div>
+      <button class="btn" id="addBtn">+ Add Recipe</button>
+    </header>
+
+    <div class="grid" id="recipes"></div>
+
+    <p class="empty" id="emptyState" style="display:none;">No recipes yet. Add one!</p>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <form id="addForm">
+        <label for="title">Recipe Title</label>
+        <input type="text" name="title" required>
+
+        <label for="subtitle">Description</label>
+        <input type="text" name="subtitle">
+
+        <label for="ingredients">Ingredients (one per line)</label>
+        <textarea name="ingredients" required></textarea>
+
+        <label for="steps">Steps (one per line)</label>
+        <textarea name="steps" required></textarea>
+
+        <label for="recipeImage">Recipe Image</label>
+        <input type="file" id="recipeImage" name="image" accept="image/*" hidden>
+        
+        <button type="button" id="uploadBtn" class="btn">Upload Image</button>
+        
+        <span class="image-status" id="uploadStatus" style="display:none;">
+          Image uploaded
+          <button type="button" id="clearImage" class="clear-btn">✕</button>
+        </span>
+
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end;">
+          <button type="button" class="btn" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+<template id="recipe-template">
+  <div class="card">
+    <div class="card-header">
+      <div class="info">
+        <div class="thumbnail"></div>
+        <div class="titles">
+          <div class="name"></div>
+          <div class="desc"></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="arrow">&#9660;</button>
+        <button class="delete-btn">🗑️</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="recipe-image"></div>
+      <div class="card-inner">
+        <div class="ingredients">
+          <strong>Ingredients:</strong>
+          <ul class="ing-list"></ul>
+        </div>
+        <div class="steps">
+          <strong>Steps:</strong>
+          <ol class="steps-list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="script.js"></script>
+</html>
